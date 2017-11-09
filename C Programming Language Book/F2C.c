@@ -1,18 +1,13 @@
 #include <stdio.h>
 /* transforms a Fahrenheit to Celsius */
+#define MIN 0 /*The min of temperature */
+#define MAX 300 /*The max of temperature */
+#define STEP 20 /*The step which the temperature must scale*/
 int main()
 {
-    int celsius, fahr, step, min, max;
-    min = 0;
-    max = 300;
-    step = 20;
+    int fahr;
 
-    fahr = min;
-
-    while (fahr <= max) {
-        celsius = 5 * (fahr - 32) / 9;
-        /*I changed the equation (original: (5/9) * (F-32) ) because in C language when you divide two int numbers you will have a truncate so 5/9 will become 0 and every statement will return 0 ;) */
-        printf("%d\t%d\n", fahr, celsius);
-        fahr = fahr + step;
+    for (fahr = MIN;  fahr <= MAX; fahr = fahr + STEP) {
+        printf("%d\t%6.1f\n", fahr, (5.0 / 9.0) * (fahr - 32.0));
     }
 }
